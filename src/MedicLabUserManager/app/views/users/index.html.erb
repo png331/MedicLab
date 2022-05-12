@@ -1,0 +1,29 @@
+<h1>Users</h1>
+
+<div id="users">
+  <table class="table table-striped table-hover table-bordered text-break " style="width:100%;">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Dateofbirth</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <%= render user %>
+      <td><%= link_to "Show this user", user, class:"btn btn-primary" %></td>
+    </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "New user", new_user_path, class:"btn btn-success"%>

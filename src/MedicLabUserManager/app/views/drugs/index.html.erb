@@ -1,0 +1,12 @@
+<h1>Drugs</h1>
+
+<div id="drugs">
+  <% @drugs.each do |drug| %>
+    <%= render drug %>
+    <p>
+      <%= link_to "Show this drug", drug, class:"btn btn-primary" %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New drug", new_drug_path, class:"btn btn-success" %>
