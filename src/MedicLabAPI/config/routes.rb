@@ -6,9 +6,7 @@ Rails.application.routes.draw do
              }
   resources :users, except: [:new]  do resources :examinations end
   resources :examinations, only: []  do resources :perscriptions end
-  resources :perscriptions, only:[]  do resources :perscription_drugs end
-  resources :roles
-  resources :drugs
+  resources :perscriptions, only: []  do resources :perscription_drugs end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

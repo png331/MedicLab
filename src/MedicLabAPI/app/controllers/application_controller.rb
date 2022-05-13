@@ -11,6 +11,10 @@ class ApplicationController < ActionController::API
     def is_admin?
         current_user.role.name == "Admin"
     end
+
+    def is_doctor?
+        current_user.role.name == "Doctor"
+    end
     
     def unauthorized_action
         render json: {
@@ -21,6 +25,12 @@ class ApplicationController < ActionController::API
 
     def allow_admins_only
         if !is_admin?
+            unauthorized_action
+        end
+    end
+
+    def allow_admins_doctors_only
+        if !is_admin? && !is_doctor?
             unauthorized_action
         end
     end

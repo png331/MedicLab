@@ -1,7 +1,8 @@
 class PerscriptionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_perscription, only: %i[ show update destroy ]
-
+  before_action :allow_admins_doctors_only
+  
   # GET /perscriptions
   def index
     @examination = get_examination
