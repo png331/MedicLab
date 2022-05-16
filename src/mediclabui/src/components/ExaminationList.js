@@ -1,6 +1,5 @@
 const ExaminationList = (props) => {
     const examination = props.examinations;
-
     function RenderPerscription(props) {
         if('perscription' in props.examination) {
             return (
@@ -14,28 +13,29 @@ const ExaminationList = (props) => {
             )
         }
     }
-
     function RenderPerscriptionDrugs(props) {
-        if('perscription_drugs' in props.examination) {
-            <div className="child">
-            <h2>Perscriped drugs</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <td><strong>Description Usage</strong></td>
-                            <td style={{paddingLeft: '10px'}}><strong>Drug</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {props.examination.perscription.perscription_drugs.map( (perscriptionDrug) => (        
-                        <tr key={perscriptionDrug.id}>
-                            <td>{perscriptionDrug.usageDescription}</td>
-                            <td style={{paddingLeft: '10px'}}>{perscriptionDrug.drug.name}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-            </div>
+        if('perscription' in props.examination && 'perscription_drugs' in props.examination.perscription) {
+            return (
+                <div className="child">
+                <h2>Perscriped drugs</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td><strong>Description Usage</strong></td>
+                                <td style={{paddingLeft: '10px'}}><strong>Drug</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {props.examination.perscription.perscription_drugs.map( (perscriptionDrug) => (        
+                            <tr key={perscriptionDrug.id}>
+                                <td>{perscriptionDrug.usageDescription}</td>
+                                <td style={{paddingLeft: '10px'}}>{perscriptionDrug.drug.name}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+            )
         }
     }
 

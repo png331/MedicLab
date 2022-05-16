@@ -1,6 +1,7 @@
 class ExaminationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_examination, only: %i[ show update destroy ]
+  before_action :allow_admins_doctors_only, except: [ :index ]
 
 
   # GET /examinations
