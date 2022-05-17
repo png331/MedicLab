@@ -14,7 +14,9 @@ const ExaminationList = (props) => {
         }
     }
     function RenderPerscriptionDrugs(props) {
-        if('perscription' in props.examination && 'perscription_drugs' in props.examination.perscription) {
+        if('perscription' in props.examination && 
+        'perscription_drugs' in props.examination.perscription && 
+        props.examination.perscription.perscription_drugs.length !== 0) {
             return (
                 <div className="child">
                 <h2>Perscriped drugs</h2>
@@ -38,7 +40,6 @@ const ExaminationList = (props) => {
             )
         }
     }
-
     return ( 
         examination.map( (examination) => (
             <div className="blog-preview" key={examination.id}>

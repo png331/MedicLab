@@ -8,7 +8,6 @@ export default class Examination extends React.Component {
     };
 
     async componentDidMount() {
-
         const accessToken = sessionStorage.getItem('accessToken');
         const user = JSON.parse(sessionStorage.getItem('user'));
         var myHeaders = new Headers();
@@ -18,15 +17,13 @@ export default class Examination extends React.Component {
             method: 'GET',
             headers: myHeaders
         };
-
-        const response =  await fetch(`http://localhost:3001/users/${user.id}/examinations`, requestOptions);
+        const APIurl = 'http://10.5.7.57:3001'; 
+        const response =  await fetch(`${APIurl}/users/${user.id}/examinations`, requestOptions);
         const data = await response.json();
         this.setState({examination: data, loading: false})
     }
     render() {
-        
         return (
-            
             <div className="content"> 
                 {this.state.loading || !this.state.examination ? 
                     <div><h2>loading...</h2></div> : this.state.examination.length ?

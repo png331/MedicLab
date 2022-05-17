@@ -23,8 +23,8 @@ body {
   font-family: "Quicksand";
 }
 h1,h2,h3,h4,h5,h6,label,span {
-  font-weight: 500;
-  font-family: 'Fira Sans', sans-serif;
+  font-weight: 600;
+  font-family: "Quicksand";
 }
 body, html, .App, #root, .auth-wrapper {
   width: 100%;

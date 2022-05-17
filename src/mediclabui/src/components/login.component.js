@@ -10,9 +10,11 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import swal from 'sweetalert';
 
+const APIurl = 'http://10.5.7.57:3001';
 const useStyles = makeStyles((theme) => ({
   root: {
-    //height: '100vh',
+    justifyContent: 'center',
+    marginTop: '5em'
   },
   paper: {
     margin: theme.spacing(8, 4),
@@ -34,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 async function loginUser(credentials) {
-  return fetch('http://localhost:3001/users/sign_in', {
+  return fetch(APIurl+'/users/sign_in', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -82,6 +84,7 @@ export default function Signin() {
       <CssBaseline />
       <Grid item xs={12} md={5}  component={Paper} elevation={6} square>
         <div className={classes.paper}>
+          <h1 style={{fontSize: '36px'}}>MedicLab</h1>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
