@@ -9,7 +9,6 @@ export default class Examination extends React.Component {
 
     async componentDidMount() {
         const accessToken = sessionStorage.getItem('accessToken');
-        const user = JSON.parse(sessionStorage.getItem('user'));
         var myHeaders = new Headers();
         myHeaders.append("Authorization", accessToken);
 
@@ -18,7 +17,7 @@ export default class Examination extends React.Component {
             headers: myHeaders
         };
         const APIurl = 'http://10.5.7.57:3001'; 
-        const response =  await fetch(`${APIurl}/users/${user.id}/examinations`, requestOptions);
+        const response =  await fetch(`${APIurl}/users/${this.props.user.id}/examinations`, requestOptions);
         const data = await response.json();
         this.setState({examination: data, loading: false})
     }

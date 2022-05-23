@@ -1,5 +1,16 @@
 const ExaminationList = (props) => {
     const examination = props.examinations;
+
+    function RenderCreated(props) {
+        const date = props.created_at.substring(0,10);
+        return (
+            <p>
+            <strong>Created: </strong>
+            {date}
+            </p>
+        )
+    }
+
     function RenderPerscription(props) {
         if('perscription' in props.examination) {
             return (
@@ -59,6 +70,7 @@ const ExaminationList = (props) => {
                     <strong>Anamnesis: </strong>
                     {examination.anamnesis}
                     </p>
+                    <RenderCreated created_at={examination.created_at} />
                 </div>
                 <RenderPerscription examination={examination}/>
                 <RenderPerscriptionDrugs examination={examination}/>

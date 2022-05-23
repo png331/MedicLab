@@ -17,13 +17,13 @@ class ExaminationsController < ApplicationController
     render json: @examination
   end
 
-  # POST /examinations
-  def create
+  # POST /examinations/detailed
+  def create_complete_examination
     @user = set_user
-    @examination = @user.examinations.build(examination_params)
+    @examination = @user.examinations.build(complete_examination_params)
 
     if @examination.save
-      render json: @examination, status: :created
+      render :json => @examination.to_json(:include => { perscription: {:include => {perscription_drugs: {:include => :drug}}}}), status: :created
     else
       render json: @examination.errors, status: :unprocessable_entity
     end
@@ -56,5 +56,9 @@ class ExaminationsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def examination_params
       params.require(:examination).permit(:weightKg, :heightCm, :anamnesis, :user_id)
+    end
+
+    def complete_examination_params
+      params.require(:examination).permit(:user_id, :weightKg, :heightCm, :anamnesis, :perscription_attributes => [:description, :perscription_drugs_attributes => [:drug_id, :usageDescription]])
     end
 end

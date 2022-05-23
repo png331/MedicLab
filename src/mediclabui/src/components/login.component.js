@@ -69,6 +69,7 @@ export default function Signin() {
     });
     if (response.status.code === 200) {
       sessionStorage.setItem('user', JSON.stringify(response.user));
+      sessionStorage.setItem('role', JSON.stringify(response.role));
       swal("Success", response.status.message, "success", {
         buttons: false,
         timer: 2000,

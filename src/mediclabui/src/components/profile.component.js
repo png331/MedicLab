@@ -1,15 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Examination from "./Examination"
+import NewExamination from './NewExamination';
+import Header from './Header';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,58 +21,36 @@ const useStyles = makeStyles((theme) => ({
   large: {
     width: theme.spacing(20),
     height: theme.spacing(20),
+    marginBottom: '6px'
   }
 }));
 
 export default function Profile() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
   const user = JSON.parse(sessionStorage.getItem('user'));
-  
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const role = JSON.parse(sessionStorage.getItem('role'));
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("accessToken");
-    sessionStorage.removeItem("user");
-    window.location.href = "/";
-  };
+  function RenderNewExaminationButton(props) {
+    if(props.role === "Admin") {
+      return (
+        <NewExamination />
+      )
+    }
+  }
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            Profile
-          </Typography>
-            <IconButton onClick={handleMenu} color="inherit">
-              <Avatar />
-            </IconButton>
-            <Menu id="menu-appbar" 
-              anchorEl={anchorEl} 
-              open={open}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleLogout}>Logout</MenuItem>
-            </Menu>
-        </Toolbar>
-      </AppBar>
+      <Header  user={user} role={role} />
       <Card className={classes.root} variant="outlined">
         <CardContent>
           <Avatar className={classes.large} />
-            <Typography variant="h5">
+            <h5>
               Welcome {user.first_name} {user.last_name}
-            </Typography>
+            </h5>
+            <RenderNewExaminationButton role={role} />
         </CardContent>
       </Card>
-      <Examination  />
+      <Examination user={user} />
     </div>
-    
   );
 }

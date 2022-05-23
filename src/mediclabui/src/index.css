@@ -22,6 +22,9 @@ body {
   font-weight: 400;
   font-family: "Quicksand";
 }
+p {
+  display: block;
+}
 h1,h2,h3,h4,h5,h6,label,span {
   font-weight: 600;
   font-family: "Quicksand";
@@ -31,7 +34,7 @@ body, html, .App, #root, .auth-wrapper {
   height: 100%;
 }
 .navbar-light {
-  background-color: #ffffff;
+  background-color: #746aff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
 }
 .auth-wrapper {
@@ -74,13 +77,28 @@ body, html, .App, #root, .auth-wrapper {
   color: #167bff;
 }
 
+/* modal style */
+.modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+  border-bottom-right-radius: calc(0.3rem - 1px);
+  border-bottom-left-radius: calc(0.3rem - 1px);
+}
 .content {
   max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
-  display: block;
+  display: flex;
+  flex-direction: column-reverse;
 }
-
+.button{
+  max-width: 100px;
+}
 /* blog previews / list */
 .blog-preview {
   display: flex;
