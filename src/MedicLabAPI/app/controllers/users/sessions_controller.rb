@@ -5,7 +5,8 @@ class Users::SessionsController < Devise::SessionsController
   def respond_with(resource, _opts = {})
     render json: {
       status: {code: 200, message: 'Logged in sucessfully.'},
-      user: current_user
+      user: current_user,
+      role: current_user.role.name
     }, status: :ok
   end
 

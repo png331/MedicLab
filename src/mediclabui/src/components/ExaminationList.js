@@ -1,5 +1,16 @@
 const ExaminationList = (props) => {
     const examination = props.examinations;
+
+    function RenderCreated(props) {
+        const date = props.created_at.substring(0,10);
+        return (
+            <p>
+            <strong>Created: </strong>
+            {date}
+            </p>
+        )
+    }
+
     function RenderPerscription(props) {
         if('perscription' in props.examination) {
             return (
@@ -14,7 +25,9 @@ const ExaminationList = (props) => {
         }
     }
     function RenderPerscriptionDrugs(props) {
-        if('perscription' in props.examination && 'perscription_drugs' in props.examination.perscription) {
+        if('perscription' in props.examination && 
+        'perscription_drugs' in props.examination.perscription && 
+        props.examination.perscription.perscription_drugs.length !== 0) {
             return (
                 <div className="child">
                 <h2>Perscriped drugs</h2>
@@ -26,7 +39,7 @@ const ExaminationList = (props) => {
                             </tr>
                         </thead>
                         <tbody>
-                        {props.examination.perscription.perscription_drugs.map( (perscriptionDrug) => (        
+                        {props.examination.perscription.perscription_drugs.map( (perscriptionDrug) => (
                             <tr key={perscriptionDrug.id}>
                                 <td>{perscriptionDrug.usageDescription}</td>
                                 <td style={{paddingLeft: '10px'}}>{perscriptionDrug.drug.name}</td>
@@ -58,6 +71,7 @@ const ExaminationList = (props) => {
                     <strong>Anamnesis: </strong>
                     {examination.anamnesis}
                     </p>
+                    <RenderCreated created_at={examination.created_at} />
                 </div>
                 <RenderPerscription examination={examination}/>
                 <RenderPerscriptionDrugs examination={examination}/>
