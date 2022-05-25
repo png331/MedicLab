@@ -1,5 +1,6 @@
 import React from "react";
 import ExaminationList from "./ExaminationList";
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default class Examination extends React.Component {
     state = {
@@ -25,7 +26,7 @@ export default class Examination extends React.Component {
         return (
             <div className="content"> 
                 {this.state.loading || !this.state.examination ? 
-                    <div><h2>loading...</h2></div> : this.state.examination.length ?
+                    <CircularProgress /> : this.state.examination.length ?
                         <ExaminationList examinations={this.state.examination}/> 
                          : <div><h2>This user has no examinations...</h2></div>
             }

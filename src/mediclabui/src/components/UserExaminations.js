@@ -9,9 +9,9 @@ const UserExaminations = () => {
     const role = location.state.role;
    
     function RenderNewExaminationButton(props) {
-        if(props.role === '"Admin"') {
+        if(props.role === '"Doctor"') {
             return (
-                <NewExamination />
+                <NewExamination user={user} />
             )
         }
     }

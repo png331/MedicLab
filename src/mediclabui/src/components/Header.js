@@ -40,7 +40,7 @@ export default function Header(props) {
   };
 
   function RenderUsersButton(props) {
-    if(props.role === "Admin") {
+    if(props.role === "Doctor") {
       return (
         <Button href="/users">View Patients</Button>
       )
