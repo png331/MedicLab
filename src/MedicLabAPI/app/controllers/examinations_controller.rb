@@ -8,8 +8,11 @@ class ExaminationsController < ApplicationController
   def index
     @user = set_user
     @examinations = @user.examinations
-
-    render :json => @examinations.to_json(:include => { perscription: { :include => {perscription_drugs: { :include => :drug}}}})
+    if !is_admin? && !is_doctor? && @user != current_user
+      unauthorized_action
+    else
+      render :json => @examinations.to_json(:include => { perscription: { :include => {perscription_drugs: { :include => :drug}}}})
+    end
   end
 
   # GET /examinations/1
