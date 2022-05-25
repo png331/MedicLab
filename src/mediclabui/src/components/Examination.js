@@ -17,7 +17,7 @@ export default class Examination extends React.Component {
             method: 'GET',
             headers: myHeaders
         };
-        const APIurl = 'http://10.5.7.57:3001'; 
+        const APIurl = 'http://localhost:3001'; 
         const response =  await fetch(`${APIurl}/users/${this.props.user.id}/examinations`, requestOptions);
         const data = await response.json();
         this.setState({examination: data, loading: false})

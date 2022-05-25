@@ -6,7 +6,7 @@ export default function NewExamination(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const APIurl = 'http://10.5.7.57:3001';
+    const APIurl = 'http://localhost:3001';
 
     const [loading, setLoading] = useState(true);
     //Examination input

@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import swal from 'sweetalert';
 
-const APIurl = 'http://10.5.7.57:3001';
+const APIurl = 'http://localhost:3001';
 const useStyles = makeStyles((theme) => ({
   root: {
     justifyContent: 'center',

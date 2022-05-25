@@ -17,7 +17,7 @@ export default class Users extends React.Component {
             method: 'GET',
             headers: myHeaders
         };
-        const APIurl = 'http://10.5.7.57:3001'; 
+        const APIurl = 'http://localhost:3001'; 
         const response =  await fetch(`${APIurl}/users`, requestOptions);
         const data = await response.json();
         this.setState({users: data, role: role, loading: false})
