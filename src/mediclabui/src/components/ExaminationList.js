@@ -39,7 +39,7 @@ const ExaminationList = (props) => {
                             </tr>
                         </thead>
                         <tbody>
-                        {props.examination.perscription.perscription_drugs.map( (perscriptionDrug) => (        
+                        {props.examination.perscription.perscription_drugs.map( (perscriptionDrug) => (
                             <tr key={perscriptionDrug.id}>
                                 <td>{perscriptionDrug.usageDescription}</td>
                                 <td style={{paddingLeft: '10px'}}>{perscriptionDrug.drug.name}</td>
@@ -51,6 +51,7 @@ const ExaminationList = (props) => {
             )
         }
     }
+
     return ( 
         examination.map( (examination) => (
             <div className="blog-preview" key={examination.id}>
