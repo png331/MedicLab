@@ -1,5 +1,37 @@
+import { Button } from 'react-bootstrap';
+import swal from 'sweetalert';
+
 const ExaminationList = (props) => {
     const examination = props.examinations;
+    const APIurl = 'http://localhost:3001';
+    const loggedUser = JSON.parse(sessionStorage.getItem('user'));
+    
+    const handleDelete = async (user, examination, e) => {
+        e.preventDefault();
+        const response =  await DeleteExamination(user, examination);
+        if (response) {
+          swal("Success", "success", {
+            buttons: false,
+            timer: 2000,
+          });
+          window.location.reload(false);
+        } else {
+          swal("Failed", response.status.message, "error");
+        }
+    }
+
+    async function DeleteExamination(user,examination) {
+        const accessToken = sessionStorage.getItem('accessToken');
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", accessToken);
+        myHeaders.append('Content-Type', 'application/json');
+        var requestOptions = {
+            method: 'DELETE',
+            headers: myHeaders,
+
+        };
+        return fetch(APIurl+`/users/${user.id}/examinations/${examination.id}`,requestOptions)
+    }
 
     function RenderCreated(props) {
         const date = props.created_at.substring(0,10);
@@ -24,6 +56,7 @@ const ExaminationList = (props) => {
             )
         }
     }
+
     function RenderPerscriptionDrugs(props) {
         if('perscription' in props.examination && 
         'perscription_drugs' in props.examination.perscription && 
@@ -75,7 +108,12 @@ const ExaminationList = (props) => {
                 </div>
                 <RenderPerscription examination={examination}/>
                 <RenderPerscriptionDrugs examination={examination}/>
-        </div> 
+                {
+                    loggedUser.id === props.user.id ? <div></div> 
+                    : <Button variant="danger" className='w-auto h-25 ms-auto mt-auto' onClick={(e) => handleDelete(props.user,examination, e)}>Delete</Button>  
+                }
+                
+        </div>
         ))        
     );
 }

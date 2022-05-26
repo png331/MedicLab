@@ -55,7 +55,7 @@ export default function NewExamination(props) {
         });
         if (response) {
           swal("Success", "success", {
-            buttons: true,
+            buttons: false,
             timer: 2000,
           });
           window.location.href = '/examinations';
@@ -214,8 +214,9 @@ export default function NewExamination(props) {
                                 required
                                 onChange={e => handleInputChange(e, index)} 
                                 className={'mb-3'}
-                                name="drug_id"    
+                                name="drug_id"
                                 >
+                                <option value={"default"} >Choose drug</option>
                                 {loading || !drugs ? <option>Loading...</option> : drugs.map( (drug) => (
                                         <option key={drug.id} value={drug.id}>{drug.name}</option> 
                                 ))

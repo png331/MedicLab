@@ -120,4 +120,5 @@ body, html, .App, #root, .auth-wrapper {
 .child {
   margin-left: 10px;
   margin-right: 10px;
+  width: 350px;
 }
