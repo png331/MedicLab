@@ -26,7 +26,6 @@ const UserExaminations = () => {
             <RenderNewExaminationButton role={role} />
         </div>
         <Examination user={user} />
-
         </>
      );
 }
