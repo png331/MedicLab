@@ -6,6 +6,7 @@ one:
   address: MyString
   dob: 2022-04-19
   username: MyString
+  email: asd@abv.bg
 
 two:
   first_name: MyString
@@ -13,3 +14,4 @@ two:
   address: MyString
   dob: 2022-04-19
   username: MyString
+  email: ppppppp@dudududud.com

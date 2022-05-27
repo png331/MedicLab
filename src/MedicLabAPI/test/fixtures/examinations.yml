@@ -4,8 +4,10 @@ one:
   weightKg: 9.99
   heightCm: 9.99
   anamnesis: MyText
+  user_id: 1
 
 two:
   weightKg: 9.99
   heightCm: 9.99
   anamnesis: MyText
+  user_id: 2
